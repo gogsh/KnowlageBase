@@ -1,4 +1,3 @@
-import mongoose from 'mongoose'
 import connectDB from '../../middleware/mongodb'
 import bc from '../../middleware/bcrypt'
 import User from '../../models/user'
