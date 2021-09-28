@@ -1,11 +1,27 @@
-import type { AppProps /*, AppContext */ } from 'next/app'
+import { BrowserRouter } from 'react-router-dom'
 
-function MyApp({ Component, pageProps }: AppProps) {
+import AuthContext from '../context/AuthContext'
+import { useAuth } from '../hooks/auth.hook'
+import { useRoutes } from '../router'
+
+function MyApp({ children }) {
   return (
-    <div suppressHydrationWarning>
-      {typeof window === 'undefined' ? null : <Component {...pageProps} />}
+    <div className={'_app'} suppressHydrationWarning>
+      {typeof window === 'undefined' ? null : children}
     </div>
   )
 }
 
-export default MyApp
+export default function App() {
+  const { token, login, logout, userId, nickname } = useAuth()
+  const isAuthenticated = !!token
+  return (
+    <MyApp>
+      <AuthContext.Provider value={{ token, userId, nickname, login, logout }}>
+        <BrowserRouter>
+          {useRoutes(isAuthenticated)}
+        </BrowserRouter>
+      </AuthContext.Provider>
+    </MyApp>
+  )
+}
