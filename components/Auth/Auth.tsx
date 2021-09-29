@@ -2,6 +2,7 @@ import { useState, useContext } from 'react'
 
 import authController from '../../controllers/authController'
 import AuthContext from '../../context/AuthContext'
+import LanguageContext from '../../context/LanguageContext'
 
 interface Props {}
 
@@ -15,6 +16,9 @@ function Auth(props: Props) {
 
   const { registerHandler, loginHandler } = authController()
   const auth = useContext(AuthContext)
+
+  const L = useContext(LanguageContext).Auth
+  console.log(L)
 
   const loginHandle = async () => {
     const data = await loginHandler({
@@ -43,18 +47,18 @@ function Auth(props: Props) {
     <>
       {isLoggingIn ? (
         <>
-          <input name={'email'} onChange={changeHandler} placeholder={'email'}/>
-          <input name={'password'} onChange={changeHandler} placeholder={'password'}/>
-          <button onClick={loginHandle}>Войти</button>
-          <button onClick={isLoggingInHandle}>Cоздать аккаунт</button>
+          <input name={'email'} onChange={changeHandler} placeholder={L.email}/>
+          <input name={'password'} onChange={changeHandler} placeholder={L.password}/>
+          <button onClick={loginHandle}>{L.logIn}</button>
+          <button onClick={isLoggingInHandle}>{L.createAccount}</button>
         </>
       ) : (
         <>
-          <input name={'email'} onChange={changeHandler} placeholder={'email'}/>
-          <input name={'password'} onChange={changeHandler} placeholder={'password'}/>
-          <input name={'nickname'} onChange={changeHandler} placeholder={'nickname'}/>
-          <button onClick={registerHandle}>Зарегистрироваться</button>
-          <button onClick={isLoggingInHandle}>У меня уже есть аккаунт</button>
+          <input name={'email'} onChange={changeHandler} placeholder={L.email}/>
+          <input name={'password'} onChange={changeHandler} placeholder={L.password}/>
+          <input name={'nickname'} onChange={changeHandler} placeholder={L.nickname}/>
+          <button onClick={registerHandle}>{L.register}</button>
+          <button onClick={isLoggingInHandle}>{L.iHaveAccount}</button>
         </>
       )}
     </>
