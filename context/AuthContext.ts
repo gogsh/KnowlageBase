@@ -1,12 +1,7 @@
 import { createContext } from 'react'
+import { AuthContextType } from '../types/Auth.types'
 
-const AuthContext : {
-  token: string | null,
-  userId: string | null,
-  nickname: string | null,
-  login: (jwtToken: string, id: string, name: string,) => void,
-  logout: () => void,
-} = {
+const AuthContext: AuthContextType = {
   token: null,
   userId: null,
   nickname: null,
