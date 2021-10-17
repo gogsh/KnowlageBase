@@ -28,8 +28,8 @@ const handler = async (req, res) => {
         return res.json({
           token,
           email: user['email'],
-          nickname: user['name'],
-          userId: user['userId'],
+          nickname: user['nickname'],
+          userId: user['_id'],
         })
       } catch (error) {
         return res.status(500).send(error.message)

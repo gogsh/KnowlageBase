@@ -28,6 +28,7 @@ const handler = async (req, res) => {
           nickname,
           email,
           password: passwordhash,
+          articles: []
         })
         const usercreated = await user.save()
         return res.status(200).send(usercreated)
