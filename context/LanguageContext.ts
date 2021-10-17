@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import { Translation } from '../types/language'
+import { Translation } from '../types/Language.types'
 
 const LanguageContex: Translation = {
   Auth: {
