@@ -6,6 +6,8 @@ import { useAuth } from '../hooks/auth.hook'
 import LanguageContext from '../context/LanguageContext'
 import Language from '../models/language'
 
+import ThemeContext from '../context/ThemeContext'
+
 import { useRoutes } from '../router'
 
 function MyApp({ children }) {
@@ -23,12 +25,13 @@ export default function App() {
   const L = new Language('ru')
   return (
     <MyApp>
-      <LanguageContext.Provider value={L.getTranlation()}>
-        <AuthContext.Provider
-          value={{ token, userId, nickname, login, logout }}>
-          <BrowserRouter>{useRoutes(isAuthenticated)}</BrowserRouter>
-        </AuthContext.Provider>
-      </LanguageContext.Provider>
+      <ThemeContext.Provider value={{ theme: 'light' }}>
+        <LanguageContext.Provider value={L.getTranlation()}>
+          <AuthContext.Provider value={{ token, userId, nickname, login, logout }}>
+            <BrowserRouter>{useRoutes(isAuthenticated)}</BrowserRouter>
+          </AuthContext.Provider>
+        </LanguageContext.Provider>
+      </ThemeContext.Provider>
     </MyApp>
   )
 }
