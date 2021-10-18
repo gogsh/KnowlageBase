@@ -1,13 +1,13 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import Article from './pages/article'
+import ArticlePage from './pages/article'
 import AuthPage from './pages/auth'
 
 export const useRoutes = isAuthenticated => {
   return isAuthenticated ? (
     <Switch>
       <Route path='/' exact>
-        <Article />
+        <ArticlePage />
       </Route>
       <Redirect to='/' />
     </Switch>

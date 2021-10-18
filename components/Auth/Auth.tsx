@@ -17,6 +17,8 @@ const Auth: React.FC<Props> = () => {
   })
   const auth = useContext(AuthContext)
   const { loading, request, error, clearError } = useHttp()
+
+  /** translations */
   const L = useContext(LanguageContext).Auth
 
   const loginHandle = async () => {

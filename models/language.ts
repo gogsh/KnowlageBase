@@ -1,4 +1,4 @@
-import { Locale, Translation } from '../types/language'
+import { Locale, Translation } from '../types/Language.types'
 
 export default class Language {
   Translation: {
@@ -31,7 +31,7 @@ export default class Language {
 
   constructor(public locale: string) {
     if (typeof window !== 'undefined') {
-      const currentLanguage = localStorage.getItem('language')
+      const currentLanguage: string = localStorage.getItem('language')
       if (!currentLanguage) {
         if (navigator.language === 'ru-RU' || navigator.language === 'ru') {
           localStorage.setItem('language', 'ru')

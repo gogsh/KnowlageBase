@@ -21,6 +21,10 @@ if (!mongoose.models.User) {
       type: Date,
       default: Date.now,
     },
+    articles: {
+      type: Array,
+      required: true
+    }
   })
 }
 
