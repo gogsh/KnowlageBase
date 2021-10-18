@@ -11,16 +11,14 @@ import Language from '../models/language'
 import { useRoutes } from '../router'
 
 import { Normalize } from 'styled-normalize'
-import globalStyles from '../styles/global'
+import GlobalStyles from '../styles/global'
+import GlobalFonts from '../styles/fonts/fonts'
 import { ThemeProvider } from 'styled-components'
-import { ligth, dark } from '../Themes/Themes'
+import { ligth, dark } from '../themes/Themes'
 
 function MyApp({ children }) {
   return (
     <div className={'_app'} suppressHydrationWarning>
-       <style jsx global>
-        {globalStyles}
-      </style>
       {typeof window === 'undefined' ? null : children}
     </div>
   )
@@ -39,6 +37,8 @@ export default function App() {
   return (
     <MyApp>
       <Normalize />
+      <GlobalFonts />
+      <GlobalStyles />
       <ThemeProvider theme={{ currentTheme: theme, handler: themeHandler }}>
         <LanguageContext.Provider value={L.getTranlation()}>
           <AuthContext.Provider value={{ token, userId, nickname, login, logout }}>

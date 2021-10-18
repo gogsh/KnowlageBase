@@ -1,8 +1,18 @@
-import css from 'styled-jsx/css'
+import { createGlobalStyle } from 'styled-components'
 
-export default css.global`
-  body {
-    height: 100%;
-    width: 100%;
-  }
+export default createGlobalStyle`
+    * {
+      font-family: 'Open Sans';
+    }
+    body {
+        height: 100%;
+        width: 100%;
+      }
+    ._app {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    }
 `
