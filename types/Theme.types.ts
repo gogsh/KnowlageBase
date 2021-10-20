@@ -15,10 +15,15 @@ export type Color =
   // primary background
   | 'linear-gradient(90.26deg, #DE6262 -2.18%, #FFB88C 99.78%)'
 
+  // border
+  | '#EBEBEB'
+
 
 export interface Theme {
   background: Color
   placeholder: Color
+  border: Color
+  text: Color
   buttons: {
     color: {
       text: {

@@ -25,7 +25,9 @@ const themes: {
 } = {
   light: {
     background : '#FBFBFB',
+    border: '#EBEBEB',
     placeholder: colors.text.secondary,
+    text: '#202020',
     buttons: {
       color: {
         text: {
