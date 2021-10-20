@@ -10,4 +10,8 @@ export type Translation = {
     password: string,
     nickname: string,
   }
+  Article: {
+    writeHeading: string,
+    writeBody: string,
+  }
 }

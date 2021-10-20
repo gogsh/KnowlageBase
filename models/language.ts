@@ -15,6 +15,10 @@ export default class Language {
         password: 'пароль',
         nickname: 'никнейм',
       },
+      Article: {
+        writeHeading: 'название',
+        writeBody: 'напишите что-нибудь',
+      }
     },
     eng: {
       Auth: {
@@ -26,6 +30,10 @@ export default class Language {
         password: 'password',
         nickname: 'nickname',
       },
+      Article: {
+        writeHeading: 'name',
+        writeBody: 'write something',
+      }
     },
   }
 
