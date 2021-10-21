@@ -11,6 +11,10 @@ const LanguageContex: Translation = {
     password: '',
     nickname: '',
   },
+  Article: {
+    writeHeading: '',
+    writeBody: '',
+  }
 }
 
 export default createContext(LanguageContex)
