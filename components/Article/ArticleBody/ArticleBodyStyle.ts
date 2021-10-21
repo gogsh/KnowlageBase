@@ -32,5 +32,14 @@ export const Wrapper = styled.article`
     outline: none;
   }
 `
-
+// for textarea
 // background:${props=> props.theme.currentTheme.background};
+
+export const СreateArticleWrapper = styled.div`
+  display: flex;
+  padding: 30%;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  gap:12px;
+`

@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react'
+import TextareaAutosize from 'react-textarea-autosize';
 import { Article } from '../../../types/Article.types'
 import LanguageContext from '../../../context/LanguageContext'
 
-import { Wrapper } from './ArticleBodyStyle'
+import { Wrapper, СreateArticleWrapper} from './ArticleBodyStyle'
 import Button from '../../UI/Button/Button'
 import Input from '../../UI/Input/Input'
 
@@ -76,25 +77,25 @@ const ArticleBody: React.FC<Props> = ({
                 onChange={articleChangeHandler}
                 spellCheck={false}
                 className={'ArticleBody__heading-input'}
-                name='heading'
+                name={'heading'}
                 placeholder={L.writeHeading}
                 value={currentArticle.heading}
               />
-              <textarea
+              <TextareaAutosize
                 onChange={articleChangeHandler}
-                name='body'
-                cols={30}
-                rows={10}
+                id={'Article-textarea'}
+                name={'body'}
                 value={currentArticle.body}
                 spellCheck={false}
-                placeholder={L.writeBody}></textarea>
+                placeholder={L.writeBody}
+              />
             </>
           ) : (
             <>loader...</>
           )}
         </>
       ) : (
-        <>
+        <СreateArticleWrapper>
           <Input
             placeholder={L.writeName}
             onChange={newArticleNameHandler}
@@ -107,7 +108,7 @@ const ArticleBody: React.FC<Props> = ({
             size={'normal'}
             type={newArticleName ? 'primary' : 'disabled'}
           />
-        </>
+        </СreateArticleWrapper>
       )}
     </Wrapper>
   )
