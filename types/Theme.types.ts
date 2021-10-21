@@ -18,7 +18,6 @@ export type Color =
   // border
   | '#EBEBEB'
 
-
 export interface Theme {
   background: Color
   placeholder: Color
@@ -40,5 +39,12 @@ export interface Theme {
         secondary: Color
       }
     }
+  }
+  icons: {
+    disabled: Color
+    danger: Color
+    primary: Color
+    secondary: Color
+    hover: Color
   }
 }

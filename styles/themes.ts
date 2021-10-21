@@ -44,6 +44,13 @@ const themes: {
           secondary: colors.background.secondary,
         }
       }
+    },
+    icons: {
+      disabled: '#EBEBEB',
+      danger: '#F0452D',
+      primary: '#202020',
+      secondary: '#7E7E7E',
+      hover:'#7E7E7E',
     }
   },
   dark: ''
