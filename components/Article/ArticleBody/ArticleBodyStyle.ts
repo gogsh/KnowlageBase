@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { constants } from '../../../styles/constants'
 
 export const Wrapper = styled.article`
   display: flex;
@@ -21,7 +22,7 @@ export const Wrapper = styled.article`
     background: white;
     line-height: 140%;
   }
-  input {
+  .ArticleBody__heading-input {
     width: 100%;
     font-size: 2em;
     background: none;

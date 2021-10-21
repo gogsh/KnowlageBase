@@ -3,6 +3,8 @@ import { Article } from '../../../types/Article.types'
 import LanguageContext from '../../../context/LanguageContext'
 
 import { Wrapper } from './ArticleBodyStyle'
+import Button from '../../UI/Button/Button'
+import Input from '../../UI/Input/Input'
 
 interface Props {
   articles: Article[]
@@ -11,6 +13,7 @@ interface Props {
   saveArticle: any
   newArticleNameHandler: any
   createArticleHandler: any
+  newArticleName: string
 }
 
 const ArticleBody: React.FC<Props> = ({
@@ -20,6 +23,7 @@ const ArticleBody: React.FC<Props> = ({
   saveArticle,
   newArticleNameHandler,
   createArticleHandler,
+  newArticleName,
 }: Props) => {
   const [currentArticle, setCurrentArticle] = useState<Article | null>(null)
   const [currentArticleIndex, setСurrentArticleIndex] = useState<number | null>(null)
@@ -37,7 +41,7 @@ const ArticleBody: React.FC<Props> = ({
   }, [articles, currentArticleId])
 
   function articleChangeHandler(e) {
-    const duplicate = _generateDublicate(e)
+    const duplicate = _generateArticleDublicate(e)
 
     setCurrentArticle(duplicate)
     const updateArticles = [...articles]
@@ -46,7 +50,7 @@ const ArticleBody: React.FC<Props> = ({
     saveArticle(duplicate, 1000)
   }
 
-  function _generateDublicate(e) {
+  function _generateArticleDublicate(e) {
     /** if its casual input/textarea field */
     if (e.target.name) {
       return {
@@ -71,9 +75,10 @@ const ArticleBody: React.FC<Props> = ({
               <input
                 onChange={articleChangeHandler}
                 spellCheck={false}
-                name='name'
+                className={'ArticleBody__heading-input'}
+                name='heading'
                 placeholder={L.writeHeading}
-                value={currentArticle.name}
+                value={currentArticle.heading}
               />
               <textarea
                 onChange={articleChangeHandler}
@@ -90,8 +95,18 @@ const ArticleBody: React.FC<Props> = ({
         </>
       ) : (
         <>
-          <input type='text' onChange={newArticleNameHandler} />
-          <button onClick={createArticleHandler}>create</button>
+          <Input
+            placeholder={L.writeName}
+            onChange={newArticleNameHandler}
+            size={'normal'}
+            name={'name'}
+          />
+          <Button
+            clickHandler={createArticleHandler}
+            text={L.createArticleButton}
+            size={'normal'}
+            type={newArticleName ? 'primary' : 'disabled'}
+          />
         </>
       )}
     </Wrapper>

@@ -52,6 +52,7 @@ const Article: React.FC = () => {
           saveArticle={saveArticle}
           newArticleNameHandler={newArticleNameHandler}
           createArticleHandler={createArticleHandler}
+          newArticleName = {newArticleName}
         />
       </Layout>
     </>

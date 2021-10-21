@@ -13,6 +13,7 @@ const handler = async (req, res) => {
       const emptyArticle: Article = {
         _id: articleId,
         name: articleName,
+        heading: '',
         body: '',
       }
 

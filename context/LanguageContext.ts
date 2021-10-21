@@ -14,6 +14,8 @@ const LanguageContex: Translation = {
   Article: {
     writeHeading: '',
     writeBody: '',
+    writeName: '',
+    createArticleButton: '',
   }
 }
 

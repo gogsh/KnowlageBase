@@ -16,8 +16,10 @@ export default class Language {
         nickname: 'никнейм',
       },
       Article: {
-        writeHeading: 'название',
-        writeBody: 'напишите что-нибудь',
+        writeHeading: 'Заголовок',
+        writeBody: 'Напишите что-нибудь',
+        writeName: 'Название файла',
+        createArticleButton: 'Создать'
       }
     },
     eng: {
@@ -31,8 +33,10 @@ export default class Language {
         nickname: 'nickname',
       },
       Article: {
-        writeHeading: 'name',
-        writeBody: 'write something',
+        writeHeading: 'Heading',
+        writeBody: 'Write something',
+        writeName: 'File name',
+        createArticleButton: 'create'
       }
     },
   }
