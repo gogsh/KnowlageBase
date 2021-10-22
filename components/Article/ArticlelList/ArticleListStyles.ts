@@ -2,12 +2,12 @@ import styled from 'styled-components'
 import { constants } from '../../../styles/constants'
 
 export const Wrapper = styled.div`
-  border-right: 1px solid ${props => props.theme.currentTheme.border};
   padding-right: 20px;
   max-width: 250px;
   min-width: 250px;
   position: sticky;
   top: 0;
+  min-height: 80vh;
   ul {
     margin-left: 0;
     padding-left: 0;
@@ -18,6 +18,7 @@ export const Wrapper = styled.div`
       button {
         background: none;
         border: none;
+        text-align: left;
       }
     }
   }
@@ -34,7 +35,7 @@ export const Wrapper = styled.div`
   .Article-list__article-link_selected {
     text-align: left;
     cursor: default;
-    margin-left: 10px;
+    padding: 2px;
     font-weight: bold;
     color: ${props => props.theme.currentTheme.text};
   }
