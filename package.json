@@ -13,6 +13,7 @@
     "bcrypt": "^5.0.1",
     "email-validator": "^2.0.4",
     "jsonwebtoken": "^8.5.1",
+    "markdown-it": "^12.2.0",
     "mongoose": "^6.0.7",
     "next": "^11.1.2",
     "react": "^17.0.2",
