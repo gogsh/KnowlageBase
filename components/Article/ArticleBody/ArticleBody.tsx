@@ -1,11 +1,21 @@
 import React, { useState, useEffect, useContext } from 'react'
-import TextareaAutosize from 'react-textarea-autosize';
+import TextareaAutosize from 'react-textarea-autosize'
 import { Article } from '../../../types/Article.types'
 import LanguageContext from '../../../context/LanguageContext'
 
-import { Wrapper, СreateArticleWrapper} from './ArticleBodyStyle'
+import {
+  Wrapper,
+  СreateArticleWrapper,
+  ArticleLabel,
+  ArticleHeader,
+  MarkdownContainer,
+} from './ArticleBodyStyle'
+
 import Button from '../../UI/Button/Button'
 import Input from '../../UI/Input/Input'
+import Icon from '../../UI/Icon/Icon'
+
+import md from '../../../middleware/markdownIt'
 
 interface Props {
   articles: Article[]
@@ -28,6 +38,7 @@ const ArticleBody: React.FC<Props> = ({
 }: Props) => {
   const [currentArticle, setCurrentArticle] = useState<Article | null>(null)
   const [currentArticleIndex, setСurrentArticleIndex] = useState<number | null>(null)
+  const [isEditable, setIsEditable] = useState<boolean>(false)
   const L = useContext(LanguageContext).Article
 
   useEffect(() => {
@@ -36,6 +47,9 @@ const ArticleBody: React.FC<Props> = ({
         if (article._id === currentArticleId) {
           setCurrentArticle(article)
           setСurrentArticleIndex(index)
+          if (article.body === '') {
+            setIsEditable(true)
+          }
         }
       })
     }
@@ -52,18 +66,9 @@ const ArticleBody: React.FC<Props> = ({
   }
 
   function _generateArticleDublicate(e) {
-    /** if its casual input/textarea field */
-    if (e.target.name) {
-      return {
-        ...currentArticle,
-        [e.target.name]: e.target.value,
-      }
-      /** else if its HTML element like H1 */
-    } else {
-      return {
-        ...currentArticle,
-        [e.target.className]: e.target.innerHTML,
-      }
+    return {
+      ...currentArticle,
+      [e.target.name]: e.target.value,
     }
   }
 
@@ -73,22 +78,70 @@ const ArticleBody: React.FC<Props> = ({
         <>
           {currentArticle ? (
             <>
-              <input
-                onChange={articleChangeHandler}
-                spellCheck={false}
-                className={'ArticleBody__heading-input'}
-                name={'heading'}
-                placeholder={L.writeHeading}
-                value={currentArticle.heading}
-              />
-              <TextareaAutosize
-                onChange={articleChangeHandler}
-                id={'Article-textarea'}
-                name={'body'}
-                value={currentArticle.body}
-                spellCheck={false}
-                placeholder={L.writeBody}
-              />
+              {isEditable ? (
+                <>
+                  <ArticleHeader>
+                    <div className={'ArticleHeader__left-side'}>
+                      <ArticleLabel>{L.fileName}</ArticleLabel>
+                      <input
+                        onChange={articleChangeHandler}
+                        spellCheck={false}
+                        className={'ArticleHeader__file-name-input'}
+                        name={'name'}
+                        placeholder={L.writeName}
+                        value={currentArticle.name}
+                      />
+                    </div>
+                    <Icon
+                      type={'check'}
+                      clickHandler={() => {
+                        setIsEditable(!isEditable)
+                      }}
+                    />
+                  </ArticleHeader>
+
+                  <TextareaAutosize
+                    onChange={articleChangeHandler}
+                    id={'Article-textarea'}
+                    name={'body'}
+                    value={currentArticle.body}
+                    spellCheck={false}
+                    placeholder={L.writeBody}
+                  />
+                  <br />
+                  <hr
+                    style={{
+                      height: '1px',
+                      border: 'none',
+                      background: '#EBEBEB',
+                      width: '100%',
+                    }}
+                  />
+                  <MarkdownContainer
+                    opacity={'30%'}
+                    dangerouslySetInnerHTML={{
+                      __html: md.render(currentArticle.body),
+                    }}></MarkdownContainer>
+                </>
+              ) : (
+                <>
+                  <ArticleHeader>
+                    <ArticleLabel className={'ArticleBody__file-name'}>
+                      {currentArticle.name}
+                    </ArticleLabel>
+                    <Icon
+                      type={'edit'}
+                      clickHandler={() => {
+                        setIsEditable(!isEditable)
+                      }}
+                    />
+                  </ArticleHeader>
+                  <MarkdownContainer
+                    dangerouslySetInnerHTML={{
+                      __html: md.render(currentArticle.body),
+                    }}></MarkdownContainer>
+                </>
+              )}
             </>
           ) : (
             <>loader...</>
