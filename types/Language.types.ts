@@ -15,5 +15,6 @@ export type Translation = {
     writeBody: string
     writeName: string
     createArticleButton: string
+    fileName: string
   }
 }

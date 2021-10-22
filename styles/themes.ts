@@ -28,6 +28,7 @@ const themes: {
     border: '#EBEBEB',
     placeholder: colors.text.secondary,
     text: '#202020',
+    label: '#7E7E7E',
     buttons: {
       color: {
         text: {

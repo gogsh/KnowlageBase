@@ -18,8 +18,9 @@ export default class Language {
       Article: {
         writeHeading: 'Заголовок',
         writeBody: 'Напишите что-нибудь',
-        writeName: 'Название файла',
-        createArticleButton: 'Создать'
+        writeName: 'Введите название файла',
+        createArticleButton: 'Создать',
+        fileName: 'Название файла:'
       }
     },
     eng: {
@@ -35,8 +36,9 @@ export default class Language {
       Article: {
         writeHeading: 'Heading',
         writeBody: 'Write something',
-        writeName: 'File name',
-        createArticleButton: 'create'
+        writeName: 'Write a file name',
+        createArticleButton: 'create',
+        fileName: 'File name:'
       }
     },
   }

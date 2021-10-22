@@ -23,6 +23,7 @@ export interface Theme {
   placeholder: Color
   border: Color
   text: Color
+  label: Color
   buttons: {
     color: {
       text: {
