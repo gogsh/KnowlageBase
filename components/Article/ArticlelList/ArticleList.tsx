@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { Article, getArticles } from '../../../types/Article.types'
 import { Wrapper } from './ArticleListStyles'
 
+import { setArticleId } from '../../../helpers/LocalStorage'
+
 interface Props {
   getArticles: getArticles
   articles: Article[]
@@ -21,6 +23,7 @@ const ArticleList: React.FC<Props> = ({
 
   function articleClickHandler(e) {
     setCurretArticleId(e.target.id)
+    setArticleId(e.target.id)
   }
 
   return (
@@ -31,9 +34,10 @@ const ArticleList: React.FC<Props> = ({
             articles.map(article => {
               return currentArticle !== article._id ? (
                 <li key={article._id}>
-                  <button onClick={articleClickHandler} id={article._id}
-                    className='Article-list__article-link'
-                  >
+                  <button
+                    onClick={articleClickHandler}
+                    id={article._id}
+                    className='Article-list__article-link'>
                     {article.name}
                   </button>
                 </li>

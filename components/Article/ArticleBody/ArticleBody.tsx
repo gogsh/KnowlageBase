@@ -69,7 +69,6 @@ const ArticleBody: React.FC<Props> = ({
     updateArticles[currentArticleIndex] = duplicate
     setArticles(updateArticles)
     saveArticle(duplicate, 1000)
-    toast.error('тестируем')
   }
 
   async function articleDeleteHandler() {

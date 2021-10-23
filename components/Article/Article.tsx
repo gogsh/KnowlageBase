@@ -2,6 +2,8 @@ import React, { useState, useContext, useEffect } from 'react'
 import AuthContext from '../../context/AuthContext'
 import { useArticles } from '../../hooks/articles.hook'
 
+import { getArticleId } from '../../helpers/LocalStorage'
+
 import ArticleHeader from './ArticleHeader/ArticleHeader'
 import ArticleList from './ArticlelList/ArticleList'
 import ArticleBody from './ArticleBody/ArticleBody'
@@ -10,7 +12,10 @@ import ArticleFooter from './ArticleFooter/ArticleFooter'
 import { Layout } from './ArticleStyles'
 
 const Article: React.FC = () => {
-  const [currentArticleId, setCurretArticleId] = useState<string | null>(null)
+  const [currentArticleId, setCurretArticleId] = useState<string | null>(() => {
+    const initial = getArticleId()
+    return initial === 'null' ? JSON.parse(initial) : initial
+  })
   const [newArticleName, setNewArticleName] = useState<string>('')
 
   const { userId } = useContext(AuthContext)
@@ -34,7 +39,6 @@ const Article: React.FC = () => {
       setCurretArticleId(newArticleId)
       setNewArticleName('')
     }
-    // TODO: toast с ошибкой
   }
 
   useEffect(() => {
