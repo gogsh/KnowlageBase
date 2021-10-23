@@ -16,6 +16,13 @@ const LanguageContex: Translation = {
     writeBody: '',
     writeName: '',
     createArticleButton: '',
+    fileName: '',
+    toast: {
+      articleDeleteSuccess: '',
+      articleDeleteError: '',
+      articleCreateSuccess: '',
+      articleCreateError:'',
+    }
   }
 }
 

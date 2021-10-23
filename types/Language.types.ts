@@ -16,5 +16,11 @@ export type Translation = {
     writeName: string
     createArticleButton: string
     fileName: string
+    toast: {
+      articleDeleteSuccess: string,
+      articleDeleteError: string,
+      articleCreateSuccess: string,
+      articleCreateError:string,
+    }
   }
 }

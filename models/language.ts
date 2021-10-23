@@ -20,8 +20,14 @@ export default class Language {
         writeBody: 'Напишите что-нибудь',
         writeName: 'Введите название файла',
         createArticleButton: 'Создать',
-        fileName: 'Название файла:'
-      }
+        fileName: 'Название файла:',
+        toast: {
+          articleDeleteSuccess: 'Статья была удалена',
+          articleDeleteError: 'Не удалось удалить статью',
+          articleCreateSuccess: 'Статья создана',
+          articleCreateError: 'Не удалось создать статью',
+        },
+      },
     },
     eng: {
       Auth: {
@@ -37,9 +43,15 @@ export default class Language {
         writeHeading: 'Heading',
         writeBody: 'Write something',
         writeName: 'Write a file name',
-        createArticleButton: 'create',
-        fileName: 'File name:'
-      }
+        createArticleButton: 'Сreate',
+        fileName: 'File name:',
+        toast: {
+          articleDeleteSuccess: 'Article was deleted',
+          articleDeleteError: 'Error when deleting an article',
+          articleCreateSuccess: 'Article was created',
+          articleCreateError: 'Error when creating an article',
+        },
+      },
     },
   }
 

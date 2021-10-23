@@ -25,7 +25,7 @@ export const Wrapper = styled.article`
   }
 `
 
-export const ArticleHeader = styled.div`
+export const ArticleBodyHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;

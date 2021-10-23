@@ -38,6 +38,15 @@ export const useArticles = (userId: string) => {
     return articleId
   }
 
+  const deleteArticle = async (articleId: string) => {
+    const status = await request(process.env.DOMAIN + '/api/article/delete', 'POST', {
+      userId,
+      articleId,
+    })
+    getArticles()
+    return status
+  }
+
   /** timeout for autosave */
   const [saveTimeout, setSaveTimeout] = useState<number | null>(null)
 
@@ -74,6 +83,7 @@ export const useArticles = (userId: string) => {
     loading,
     createArticle,
     saveArticle,
+    deleteArticle,
     getArticles,
     error,
     clearError,

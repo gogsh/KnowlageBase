@@ -9,7 +9,7 @@ import {
   Wrapper,
   СreateArticleWrapper,
   ArticleLabel,
-  ArticleHeader,
+  ArticleBodyHeader,
   MarkdownContainer,
 } from './ArticleBodyStyle'
 
@@ -27,6 +27,8 @@ interface Props {
   newArticleNameHandler: any
   createArticleHandler: any
   newArticleName: string
+  deleteArticle: any
+  setCurretArticleId: any
 }
 
 const ArticleBody: React.FC<Props> = ({
@@ -37,6 +39,8 @@ const ArticleBody: React.FC<Props> = ({
   newArticleNameHandler,
   createArticleHandler,
   newArticleName,
+  deleteArticle,
+  setCurretArticleId,
 }: Props) => {
   const [currentArticle, setCurrentArticle] = useState<Article | null>(null)
   const [currentArticleIndex, setСurrentArticleIndex] = useState<number | null>(null)
@@ -68,6 +72,16 @@ const ArticleBody: React.FC<Props> = ({
     toast.error('тестируем')
   }
 
+  async function articleDeleteHandler() {
+    const status = await deleteArticle(currentArticleId)
+    if (status) {
+      setCurretArticleId(null)
+      toast(L.toast.articleDeleteSuccess)
+    } else {
+      toast.error(L.toast.articleDeleteError)
+    }
+  }
+
   function _generateArticleDublicate(e) {
     return {
       ...currentArticle,
@@ -83,7 +97,7 @@ const ArticleBody: React.FC<Props> = ({
             <>
               {isEditable ? (
                 <>
-                  <ArticleHeader>
+                  <ArticleBodyHeader>
                     <div className={'ArticleHeader__left-side'}>
                       <ArticleLabel>{L.fileName}</ArticleLabel>
                       <input
@@ -98,9 +112,7 @@ const ArticleBody: React.FC<Props> = ({
                     <div className={'ArticleHeader__right-side'}>
                       <Icon
                         type={'delete'}
-                        clickHandler={() => {
-                          console.log(1)
-                        }}
+                        clickHandler={articleDeleteHandler}
                         color={'#E64C3C'}
                       />
                       <Icon
@@ -110,7 +122,7 @@ const ArticleBody: React.FC<Props> = ({
                         }}
                       />
                     </div>
-                  </ArticleHeader>
+                  </ArticleBodyHeader>
 
                   <TextareaAutosize
                     onChange={articleChangeHandler}
@@ -137,7 +149,7 @@ const ArticleBody: React.FC<Props> = ({
                 </>
               ) : (
                 <>
-                  <ArticleHeader>
+                  <ArticleBodyHeader>
                     <ArticleLabel className={'ArticleBody__file-name'}>
                       {currentArticle.name}
                     </ArticleLabel>
@@ -147,7 +159,7 @@ const ArticleBody: React.FC<Props> = ({
                         setIsEditable(!isEditable)
                       }}
                     />
-                  </ArticleHeader>
+                  </ArticleBodyHeader>
                   <MarkdownContainer
                     dangerouslySetInnerHTML={{
                       __html: md.render(currentArticle.body),
@@ -166,6 +178,7 @@ const ArticleBody: React.FC<Props> = ({
             onChange={newArticleNameHandler}
             size={'normal'}
             name={'name'}
+            value={newArticleName}
           />
           <Button
             clickHandler={createArticleHandler}

@@ -8,9 +8,9 @@ export const StyledContainer = styled(ToastContainer).attrs({
   progressClassName: 'progress',
 })`
   .toast {
-    background-color: ${props => props.theme.currentTheme.toastBackground};
+    background-color: ${props => props.theme.currentTheme.toast.toastBackground};
     div {
-      color: ${props => props.theme.currentTheme.toastTextColor};
+      color: ${props => props.theme.currentTheme.toast.toastTextColor};
     }
   }
 `

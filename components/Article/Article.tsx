@@ -14,8 +14,14 @@ const Article: React.FC = () => {
   const [newArticleName, setNewArticleName] = useState<string>('')
 
   const { userId } = useContext(AuthContext)
-  const { createArticle, saveArticle, getArticles, articles, setArticles } =
-    useArticles(userId)
+  const {
+    createArticle,
+    saveArticle,
+    getArticles,
+    articles,
+    setArticles,
+    deleteArticle,
+  } = useArticles(userId)
 
   function newArticleNameHandler(e) {
     setNewArticleName(e.target.value)
@@ -26,6 +32,7 @@ const Article: React.FC = () => {
       const newArticleId = await createArticle(newArticleName)
       getArticles()
       setCurretArticleId(newArticleId)
+      setNewArticleName('')
     }
     // TODO: toast с ошибкой
   }
@@ -38,7 +45,10 @@ const Article: React.FC = () => {
 
   return (
     <>
-      <ArticleHeader />
+      <ArticleHeader
+        currentArticleId={currentArticleId}
+        setCurrentArticleId={setCurretArticleId}
+      />
       <Layout>
         <ArticleList
           getArticles={getArticles}
@@ -53,10 +63,12 @@ const Article: React.FC = () => {
           saveArticle={saveArticle}
           newArticleNameHandler={newArticleNameHandler}
           createArticleHandler={createArticleHandler}
-          newArticleName = {newArticleName}
+          newArticleName={newArticleName}
+          deleteArticle={deleteArticle}
+          setCurretArticleId={setCurretArticleId}
         />
       </Layout>
-      <ArticleFooter/>
+      <ArticleFooter />
     </>
   )
 }
