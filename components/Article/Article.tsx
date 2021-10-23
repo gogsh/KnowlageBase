@@ -5,6 +5,7 @@ import { useArticles } from '../../hooks/articles.hook'
 import ArticleHeader from './ArticleHeader/ArticleHeader'
 import ArticleList from './ArticlelList/ArticleList'
 import ArticleBody from './ArticleBody/ArticleBody'
+import ArticleFooter from './ArticleFooter/ArticleFooter'
 
 import { Layout } from './ArticleStyles'
 
@@ -55,6 +56,7 @@ const Article: React.FC = () => {
           newArticleName = {newArticleName}
         />
       </Layout>
+      <ArticleFooter/>
     </>
   )
 }
