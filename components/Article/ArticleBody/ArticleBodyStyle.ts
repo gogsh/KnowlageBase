@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { constants } from '../../../styles/constants'
 
 export const Wrapper = styled.article`
+  min-height: 60vh;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
   width: 100%;
@@ -36,6 +36,12 @@ export const ArticleHeader = styled.div`
   .ArticleHeader__left-side {
     display: flex;
     gap: 6px;
+    align-items: center;
+  }
+
+  .ArticleHeader__right-side{
+    display: flex;
+    gap: 16px;
     align-items: center;
   }
 

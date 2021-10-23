@@ -3,6 +3,8 @@ import TextareaAutosize from 'react-textarea-autosize'
 import { Article } from '../../../types/Article.types'
 import LanguageContext from '../../../context/LanguageContext'
 
+import { toast } from 'react-toastify'
+
 import {
   Wrapper,
   СreateArticleWrapper,
@@ -63,6 +65,7 @@ const ArticleBody: React.FC<Props> = ({
     updateArticles[currentArticleIndex] = duplicate
     setArticles(updateArticles)
     saveArticle(duplicate, 1000)
+    toast.error('тестируем')
   }
 
   function _generateArticleDublicate(e) {
@@ -92,12 +95,21 @@ const ArticleBody: React.FC<Props> = ({
                         value={currentArticle.name}
                       />
                     </div>
-                    <Icon
-                      type={'check'}
-                      clickHandler={() => {
-                        setIsEditable(!isEditable)
-                      }}
-                    />
+                    <div className={'ArticleHeader__right-side'}>
+                      <Icon
+                        type={'delete'}
+                        clickHandler={() => {
+                          console.log(1)
+                        }}
+                        color={'#E64C3C'}
+                      />
+                      <Icon
+                        type={'check'}
+                        clickHandler={() => {
+                          setIsEditable(!isEditable)
+                        }}
+                      />
+                    </div>
                   </ArticleHeader>
 
                   <TextareaAutosize
