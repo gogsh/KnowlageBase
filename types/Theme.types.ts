@@ -24,6 +24,8 @@ export interface Theme {
   border: Color
   text: Color
   label: Color
+  toastBackground: Color
+  toastTextColor: Color
   buttons: {
     color: {
       text: {

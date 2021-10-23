@@ -16,6 +16,8 @@ import GlobalFonts from '../styles/fonts/fonts'
 import { ThemeProvider } from 'styled-components'
 import themes from '../styles/themes'
 
+import Toast from '../components/UI/Toast/Toast'
+
 function MyApp({ children }) {
   return (
     <div className={'_app'} suppressHydrationWarning>
@@ -38,8 +40,9 @@ export default function App() {
     <MyApp>
       <Normalize />
       <GlobalFonts />
-      <GlobalStyles theme = {theme}/>
+      <GlobalStyles theme={theme} />
       <ThemeProvider theme={{ currentTheme: theme, handler: themeHandler }}>
+        <Toast />
         <LanguageContext.Provider value={L.getTranlation()}>
           <AuthContext.Provider value={{ token, userId, nickname, login, logout }}>
             <BrowserRouter>{useRoutes(isAuthenticated)}</BrowserRouter>

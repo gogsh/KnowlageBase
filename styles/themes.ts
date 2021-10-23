@@ -29,6 +29,8 @@ const themes: {
     placeholder: colors.text.secondary,
     text: '#202020',
     label: '#7E7E7E',
+    toastBackground: '#202020',
+    toastTextColor: '#FBFBFB',
     buttons: {
       color: {
         text: {
