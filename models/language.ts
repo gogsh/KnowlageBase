@@ -27,6 +27,10 @@ export default class Language {
           articleCreateSuccess: 'Статья создана',
           articleCreateError: 'Не удалось создать статью',
         },
+        menu: {
+          light: 'светлая',
+          dark: 'темная',
+        }
       },
     },
     eng: {
@@ -51,6 +55,10 @@ export default class Language {
           articleCreateSuccess: 'Article was created',
           articleCreateError: 'Error when creating an article',
         },
+        menu: {
+          light: 'light',
+          dark: 'dark',
+        }
       },
     },
   }
@@ -73,7 +81,9 @@ export default class Language {
 
   setLanguage(newLocale: Locale) {
     this.locale = newLocale
+    localStorage.setItem('language', newLocale)
   }
+  
   getTranlation(): Translation {
     return this.Translation[this.locale]
   }

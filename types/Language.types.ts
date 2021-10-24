@@ -17,10 +17,14 @@ export type Translation = {
     createArticleButton: string
     fileName: string
     toast: {
-      articleDeleteSuccess: string,
-      articleDeleteError: string,
-      articleCreateSuccess: string,
-      articleCreateError:string,
+      articleDeleteSuccess: string
+      articleDeleteError: string
+      articleCreateSuccess: string
+      articleCreateError: string
+    }
+    menu: {
+      light: string
+      dark: string
     }
   }
 }
