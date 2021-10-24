@@ -1,18 +1,32 @@
+import { useContext } from 'react'
+import LanguageContext from '../../../context/LanguageContext'
 import Header from '../../UI/Header/Header'
-import Icon from '../../UI/Icon/Icon'
-import { MenuWrapper } from './ArticleHeaderStyle'
-interface Props {}
+import Link from '../../UI/Link/Link'
+import ArtcileMenu from './ArtcileMenu/ArtcileMenu'
 
-function ArticleHeader(props: Props) {
-  const {} = props
-  
+interface Props {
+  currentArticleId: string
+  setCurrentArticleId: any
+}
+
+function ArticleHeader({ currentArticleId, setCurrentArticleId }: Props) {
+  const L = useContext(LanguageContext).translation.Article
+
   return (
     <Header>
-      <h2>Main</h2>
-      <MenuWrapper>
-        <Icon type={'cog'} clickHandler={() => {console.log(1)}} />
-        <Icon type={'door'} clickHandler={() => {console.log(1)}} />
-      </MenuWrapper>
+      {currentArticleId ? (
+        <Link
+          clickHandler={() => {
+            setCurrentArticleId(null)
+          }}
+          text={L.createArticleButton}
+        />
+      ) : (
+        <Link text={L.createArticleButton} selected={true} />
+      )}
+
+      <ArtcileMenu/>
+
     </Header>
   )
 }
