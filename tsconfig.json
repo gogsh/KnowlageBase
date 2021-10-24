@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "models/user.ts", "styles/fonts/fonts.js"  ],
+, "models/user.ts", "styles/fonts/fonts.js", "config.js"  ],
   "exclude": [
     "node_modules"
   ]

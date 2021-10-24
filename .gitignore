@@ -4,5 +4,5 @@ etxt
 /.next
 package-lock.json
 /config
-next.config.js
 .env
+config.js
