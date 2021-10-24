@@ -61,6 +61,33 @@ const ArticleBody: React.FC<Props> = ({
     }
   }, [articles, currentArticleId])
 
+  /** hotkey callbacks */
+  const _hotKeys = e => {
+    /** CTRL + S = SAVE */
+    if (e.keyCode === 83 && e.ctrlKey) {
+      e.preventDefault()
+      if (isEditable === true) {
+        setIsEditable(false)
+      }
+    }
+
+    /** CTRL + R = START EDIT */
+    if (e.keyCode === 82 && e.ctrlKey) {
+      e.preventDefault()
+      if (isEditable === false) {
+        setIsEditable(true)
+      }
+    }
+  }
+
+  /** hotkey listners */
+  useEffect(() => {
+    document.addEventListener('keydown', _hotKeys)
+    return () => {
+      removeEventListener('keydown', _hotKeys)
+    }
+  }, [isEditable])
+
   function articleChangeHandler(e) {
     const duplicate = _generateArticleDublicate(e)
 
