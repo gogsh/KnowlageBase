@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Article, getArticles } from '../../../types/Article.types'
 import { Wrapper } from './ArticleListStyles'
+import Loader from '../../UI/Loader/Loader'
 
 import { setArticleId } from '../../../helpers/LocalStorage'
 
@@ -52,7 +53,7 @@ const ArticleList: React.FC<Props> = ({
               )
             })
           ) : (
-            <div>loader...</div>
+            <Loader />
           )}
         </ul>
       </Wrapper>
