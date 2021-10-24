@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { constants } from '../../../styles/constants'
 
 export const DefaultInput = styled.input`
-  background: none;
+  background: ${props => props.theme.currentTheme.background} !important;
   outline: none;
   border: none;
   padding: ${props => constants.inputsPadding[props.size]};

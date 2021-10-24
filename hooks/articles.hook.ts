@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Article } from '../types/Article.types'
 import { useHttp } from './http.hook'
+import { setArticleId } from '../helpers/LocalStorage'
 
 /** Hook to work with article API
  * @param userId who creating the article
@@ -23,6 +24,9 @@ export const useArticles = (userId: string) => {
       userId,
     })
     setArticles(articles)
+    if(articles.length === 0) {
+      localStorage.setItem('currentArticleId', '')
+    }
   }
 
   /** Create article
@@ -34,7 +38,7 @@ export const useArticles = (userId: string) => {
       userId,
       articleName,
     })
-    // TODO: добавить в localstorage запись, чтобы при обновлении страницы оставаться на той же статье
+    setArticleId(articleId)
     return articleId
   }
 

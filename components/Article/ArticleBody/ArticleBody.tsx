@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
 import { Article } from '../../../types/Article.types'
 import LanguageContext from '../../../context/LanguageContext'
+import Loader from '../../UI/Loader/Loader'
 
 import { toast } from 'react-toastify'
 
@@ -11,6 +12,7 @@ import {
   ArticleLabel,
   ArticleBodyHeader,
   MarkdownContainer,
+  Hr,
 } from './ArticleBodyStyle'
 
 import Button from '../../UI/Button/Button'
@@ -45,7 +47,7 @@ const ArticleBody: React.FC<Props> = ({
   const [currentArticle, setCurrentArticle] = useState<Article | null>(null)
   const [currentArticleIndex, setСurrentArticleIndex] = useState<number | null>(null)
   const [isEditable, setIsEditable] = useState<boolean>(false)
-  const L = useContext(LanguageContext).Article
+  const L = useContext(LanguageContext).translation.Article
 
   useEffect(() => {
     if (articles) {
@@ -159,14 +161,7 @@ const ArticleBody: React.FC<Props> = ({
                     placeholder={L.writeBody}
                   />
                   <br />
-                  <hr
-                    style={{
-                      height: '1px',
-                      border: 'none',
-                      background: '#EBEBEB',
-                      width: '100%',
-                    }}
-                  />
+                  <Hr />
                   <MarkdownContainer
                     opacity={'30%'}
                     dangerouslySetInnerHTML={{
@@ -194,7 +189,7 @@ const ArticleBody: React.FC<Props> = ({
               )}
             </>
           ) : (
-            <>loader...</>
+            <Loader/>
           )}
         </>
       ) : (

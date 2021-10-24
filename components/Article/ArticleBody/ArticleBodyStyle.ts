@@ -12,6 +12,7 @@ export const Wrapper = styled.article`
   border-left: 1px solid ${props => props.theme.currentTheme.border};
   padding: 30px 0 0 30px;
   textarea {
+    padding: 0;
     width: 100%;
     border: none;
     overflow: auto;
@@ -39,7 +40,7 @@ export const ArticleBodyHeader = styled.div`
     align-items: center;
   }
 
-  .ArticleHeader__right-side{
+  .ArticleHeader__right-side {
     display: flex;
     gap: 16px;
     align-items: center;
@@ -72,7 +73,14 @@ export const СreateArticleWrapper = styled.div`
 
 export const MarkdownContainer = styled.div`
   opacity: ${props => props.opacity};
-   img {
+  img {
     max-width: 840px;
   }
+`
+
+export const Hr = styled.hr`
+  height: 1px;
+  border: none;
+  background: ${props=> props.theme.currentTheme.border};
+  width: 100%;
 `

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 
-export const Wrapper = styled.header`
+export const Wrapper = styled.footer`
   heigth: 50px;
   margin-top: 40px;
   display: flex;

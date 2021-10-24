@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 
 export const Wrapper = styled.header`
+  height: 60px;
   width: 60%;
   margin-top: 40px;
   heigth: fit-content;

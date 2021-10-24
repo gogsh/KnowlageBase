@@ -11,9 +11,8 @@ import Input from '../UI/Input/Input'
 
 import { Wrapper } from './AuthStyles'
 
-interface Props {}
 
-const Auth: React.FC<Props> = () => {
+const Auth: React.FC = () => {
   const [isLoggingIn, setIsLoggingIn] = useState<boolean>(true)
   const [form, setForm] = useState<AuthForm>({
     nickname: '',
@@ -24,7 +23,7 @@ const Auth: React.FC<Props> = () => {
   const { loading, request, error, clearError } = useHttp()
 
   /** translations */
-  const L = useContext(LanguageContext).Auth
+  const L = useContext(LanguageContext).translation.Auth
 
   const loginHandle = async () => {
     const data = await request(process.env.DOMAIN + '/api/login', 'POST', {

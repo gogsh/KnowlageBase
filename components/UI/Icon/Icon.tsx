@@ -4,7 +4,7 @@ import { Color } from '../../../types/Theme.types'
 
 interface Props {
   type: 'door' | 'cog' | 'edit' | 'check' | 'delete'
-  clickHandler: any
+  clickHandler?: any
   size?: number
   color?: Color
 }
