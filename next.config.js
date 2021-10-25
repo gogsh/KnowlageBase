@@ -1,8 +1,11 @@
-const config = require('./config')
+require('dotenv').config()
 
 module.exports = {
   env: {
-    ...config,
+    DB_URI: process.env.DB_URI,
+    // DB_URI: process.env.LOCAL_URI,
+    DOMAIN: process.env.DOMAIN,
+    JWT_SECRET: process.env.JWT_SECRET,
   },
   async rewrites() {
     return [
