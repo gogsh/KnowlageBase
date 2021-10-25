@@ -11,8 +11,10 @@
 ## Попробовать
 
 **Test mail** — test@test.com
+
 **Test password** — 123456
-[Playground]()
+
+[Playground](https://knowledge-base-virid.vercel.app/)
 
 ---
 
