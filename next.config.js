@@ -4,7 +4,7 @@ module.exports = {
   env: {
     DB_URI: process.env.DB_URI,
     // DB_URI: process.env.LOCAL_URI,
-    // DOMAIN: process.env.DOMAIN,
+    DOMAIN: process.env.DOMAIN,
     JWT_SECRET: process.env.JWT_SECRET,
   },
   async rewrites() {
